@@ -7,9 +7,9 @@ spring:
   lifecycle:
     timeout-per-shutdown-phase: ${GRACEFUL_PERIOD_SECONDS:2}s
   jpa:
-    show-sql: false
+    show-sql: true
     hibernate:
-      ddl-auto: validate
+      ddl-auto: create-drop
   datasource:
     url: ${DB_CONNECT:jdbc:postgresql://host.docker.internal:5432}/${DB_NAME:zona}
     username: ${DB_USER:postgres}
