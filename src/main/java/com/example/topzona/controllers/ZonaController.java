@@ -4,6 +4,7 @@ import com.example.topzona.dto.RequisitesDTO;
 import com.example.topzona.services.RequisitesService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,8 +27,10 @@ public class ZonaController {
      * @return: данные реквезитов колонии.
      */
     @GetMapping(value = API_REQUISITES + "/id", produces = MediaType.APPLICATION_JSON_VALUE)
-    RequisitesDTO getRequisites(@RequestParam(value = "id") String uuid) {
-        return service.getRequisites(UUID.fromString(uuid));
+    ResponseEntity<RequisitesDTO> getRequisites(@RequestParam(value = "id") String uuid) {
+        return ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(service.getRequisites(UUID.fromString(uuid)));
     }
 
     /**
@@ -37,9 +40,11 @@ public class ZonaController {
      * @return: данные реквезитов колонии.
      */
     @GetMapping(API_REQUISITES + "/name")
-    public List<RequisitesDTO> findRequisitesByName(
+    public ResponseEntity<List<RequisitesDTO>> findRequisitesByName(
             @RequestParam(value = "name", required = false) Optional<String> optionalName) {
-        return service.findRequisitesByName(optionalName);
+        return ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(service.findRequisitesByName(optionalName));
     }
 
 
@@ -55,7 +60,7 @@ public class ZonaController {
      * @return: данные реквезитов колонии.
      */
     @PostMapping(API_REQUISITES)
-    public RequisitesDTO createOrUpdateRequisites(
+    public ResponseEntity<RequisitesDTO> createOrUpdateRequisites(
             @RequestParam(value = "id", required = false) Optional<UUID> id,
             @RequestParam(value = "state", required = false) Optional<String> state,
             @RequestParam(value = "region", required = false) Optional<String> region,
@@ -63,7 +68,9 @@ public class ZonaController {
             @RequestParam(value = "address", required = false) Optional<String> address,
             @RequestParam(value = "name", required = false) Optional<String> name) {
 
-        return service.createOrUpdateRequisites(id, state, region, city, address, name);
+        return ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(service.createOrUpdateRequisites(id, state, region, city, address, name));
     }
 
     /**
