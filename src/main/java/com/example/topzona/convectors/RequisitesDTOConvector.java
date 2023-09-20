@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 public class RequisitesDTOConvector {
 
     public RequisitesDTO makeRequisitesDTO(RequisitesEntity entity) {
-
         return RequisitesDTO.builder()
                 .id(entity.getId())
                 .name(entity.getName())
