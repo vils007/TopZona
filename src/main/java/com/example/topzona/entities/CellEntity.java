@@ -16,7 +16,7 @@ import org.apache.commons.lang3.builder.HashCodeExclude;
 public class CellEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     int id;
 

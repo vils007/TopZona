@@ -17,14 +17,14 @@ public class CellController {
 
     private final CellsService service;
 
-    @PostMapping("/create")
-    public ResponseEntity<CellDTO> createCell(
+    @PostMapping("/createOrUpdate")
+    public ResponseEntity<CellDTO> createOrUpdateCell(
             @RequestParam(value = "id") int id,
             @RequestParam(value = "capacity") int capacity,
             @RequestParam(value = "cellType") CellsType cellType) {
         return ResponseEntity.ok()
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(service.createCell(id, capacity, cellType));
+                .body(service.createOrUpdateCell(id, capacity, cellType));
     }
 
     @GetMapping("/getAll")
