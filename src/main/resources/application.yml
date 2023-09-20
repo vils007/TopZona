@@ -9,7 +9,7 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: validate
   datasource:
     url: ${DB_CONNECT:jdbc:postgresql://host.docker.internal:5432}/${DB_NAME:zona}
     username: ${DB_USER:postgres}

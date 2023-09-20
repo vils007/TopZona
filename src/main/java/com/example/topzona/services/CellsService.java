@@ -23,7 +23,7 @@ public class CellsService {
     CellsRepository repository;
     CellDTOConvector convector;
 
-    public CellDTO createCell(int id, int capacity, CellsType cellType) {
+    public CellDTO createOrUpdateCell(int id, int capacity, CellsType cellType) {
         return convector.makeCellDTO(
                 repository.saveAndFlush(
                         new CellEntity(
