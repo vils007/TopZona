@@ -12,5 +12,5 @@ spring:
       ddl-auto: validate
   datasource:
     url: ${DB_CONNECT:jdbc:postgresql://host.docker.internal:5432}/${DB_NAME:zona}
-    username: ${DB_USER:postgres}
-    password: ${DB_PASSWORD:admin}
+    username: ${DB_USER:admin}
+    password: ${DB_PASSWORD:postgres}
